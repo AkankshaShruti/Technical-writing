@@ -1,0 +1,41 @@
+.container {
+    position: relative;
+    background-image: url('img/lamp.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 1280px;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+a{
+    font-family:arial narrow;
+    font-size: 20px;
+    font-style: italic;
+    color: white;
+}
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    Width: 100%;
+}
+td, th{
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+tr:nth-child(even){
+background-color: #81b596;
+}

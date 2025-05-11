@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Everything Science</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css"
+</head>
+  <body>
+    <a href="home.html">Home</a>
+    <h1>
+      Atomic-level characterization of the structural dynamics of proteins
+    </h1>
+    <h2>INTRODUCTION</h2>
+    <p>
+      The article titled "Atomic-level characterization of the structural
+      dynamics of proteins," authored by David E. Shaw and colleagues, delves
+      into the detailed movements and conformational changes of proteins at the
+      atomic level, providing insights into their dynamic behaviours using
+      molecular dynamics (MD) simulations. Such understanding is crucial, as
+      protein dynamics are fundamental to their biological functions and
+      interactions. Proteins are like tiny, moving machines—not rigid
+      structures. They are in constant motion, and those motions are crucial to
+      their function. If they do not move the right way, things can go
+      wrong—leading to diseases like Alzheimer's or cancer. Why is studying
+      structural dynamics of protein crucial?
+    <ul>
+        <li>To understand how proteins work
+            at the atomic level</li>
+            <li> To design better drugs that fit the moving parts,
+                not just the static structure</li>
+                <li>To predict how mutations will affect
+                    protein behaviour</li>
+    </ul>
+    </p>
+    <h2>OBJECTIVE</h2>
+    <p>
+        <ul>
+            <li>Traditionally, MD simulations were constrained to short timescales, limiting their ability to capture many biologically significant conformational changes in proteins. To overcome this, the authors developed a specialized supercomputer named Anton, designed specifically for long-duration MD simulations, enabling the observation of protein behaviours over extended periods.</li>
+            <li>FiP35 WW Domain protein and Bovine Pancreatic Trypsin Inhibitor (BPTI) protein (both the proteins have been extensively studied and a considerable amount of experimental data is available for both) were studied using MD simulations to compare the observations from the studies with the available experimental data to test the reliability of Anton.</li>
+        </ul>
+        <h2>PROCEDURE</h2>
+        <h3>FiP35 WW Domain Protein</h3>
+        <h4>1.	Folding FiP35 and villin to experimental resolution using the same force field</h4>
+        <p>A simulation was run at 337K with FiP35 in silico. The force-field used was a modified version of the Amber ff99SB. The same force-field was used to fold a variant of the villin headpiece C-terminal fragment, a small all-α protein.</p>
+    </p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>FiP35 was observed to fold to a stable conformation with a backbone root-mean-squared deviation (RMSD) of ~1 Å from the crystal structure.</li>
+            <li>The force-field also folded the α protein (villin) to within an RMSD of ~1 Å from the crystal structure.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>The modified version of Amber ff99SB was successful in overcoming the deficiencies of the previous force-field used in explicit-solvent simulations to fold FiP35.</li>
+            <li>The concern that when simulating the folding of an all-β protein, there is a possibility that the force field used might tend to over stabilize β sheets is laid to rest since the fore field folded both the proteins to within an RMSD of ~1 Å.</li>
+        </ul>
+    </p>
+    <h4>2.	Reversible folding and unfolding in an equilibrium simulation of FiP35</h4>
+    <p>They simulated FiP35, a fast-folding β-sheet protein, for 100 microseconds (twice) at a temperature of 395 K, which is about 40 K hotter than its experimental melting temperature. The in silico melting temperature was estimated using a replica exchange metadynamics simulation. At this temperature, the protein frequently folds and unfolds — ideal for studying the folding mechanism under equilibrium conditions.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>Across the two simulations, 15 full folding/unfolding events were seen.</li>
+            <li>The average folding time was ~10 µs, very close to the experimental value (~14 µs).</li>
+            <li>The folded population was ~60%, meaning that most of the time the protein stayed folded — realistic behaviour near Tₘ.</li>
+            <li>The tip of hairpin 1 forms first, then the full hairpin 1, then hairpin 2. Finally, the hydrophobic core packs in.</li>
+            <li>Unfolding happens in reverse.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>The simulation did not only match experimental folding but also multiple fold/unfold transitions were observed— huge win for simulation realism.</li>
+            <li>Folding pathway is consistent and directional. There is a dominant folding pathway i.e. no major detours or alternate routes. This is unlike other WW domain studies which suggested multiple parallel pathways.</li>
+        </ul>
+    </p>
+    <h4>3.	Independent simulation of the hairpins</h4>
+    <p>In another experiment, independent peptides corresponding to the hairpins were simulated to watch them fold reversibly. This is done to explain why FiP35 folds along a single, dominant route.</p>
+    <p>Residues were added to the two end of the hairpin three at a time and the simulation was run to observe its folding.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>Both hairpins can fold alone.</li>
+            <li>Hairpin 1 folds more slowly, but it is thermodynamically more stable (25% folded).</li>
+            <li>Hairpin 2 is faster but much less stable (only 4% folded).</li>
+            <li>When hairpin 1 is part of the full protein, its folding slows by a factor of 4 (from 1.2µs to 5µs), more than what one would expect from just “drag” or size.</li>
+            <li>When 12 residues were added on the C-terminal end folding slowed by a factor of 2.</li>
+            <li>When First 3 residues were added on the N-terminal, there was no effect.</li>
+            <li>Next 3 residues (residues 4–6) to the N terminal resulted in another 2x slowdown.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>In the full protein, hairpin 1 folds first, likely because it forms a more stable nucleus. Thermodynamic stability beats speed in determining folding order.</li>
+            <li>The first hairpin is 1.5 kcal/mol more stable than the second hairpin. Proteins do not just fold any way they like i.e. stability of intermediate structures steers the whole process.</li>
+            <li>Just a few additional residues around the hairpin affect its folding rate significantly. The increase in folding time constant might be due to interactions with other parts of the protein, possibly due to steric hindrance, long-range contacts, or conformational constraints.</li>
+        </ul>
+    </p>
+    <h4>4.	Characterizing the transition state for folding</h4>
+    <p>A variational method to define a reaction coordinate was used which is a smart, optimized way to distinguish folded, unfolded, and “in-between” states and a sample of 101 structures from the transition state ensemble (TSE) was taken. Four simulations per structure (from those 101 structures) were run to see what happens. Commitment probability (Pfold) was calculated (for a given structure, it is the probability it will fold (instead of unfolding)). If a structure is right on the transition state, it should have a 50/50 chance of folding or unfolding.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>The distribution of Pfold values peaks at 0.5 which is perfect for a TSE.</li>
+            <li>Once in the TSE, it took ~0.36–0.40 µs to either fold or unfold, which is relatively slow.</li>
+            <li>The first hairpin was observed to be formed in the transition state,</li>
+            <li>The second hairpin did not, it formed after crossing the barrier.</li>
+            <li>Folding time of the entire protein was 10 µs.</li>
+            <li>Hairpin 1 formation time constant was 5 µs.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>This validates that the reaction coordinate and TSE identification were accurate.</li>
+            <li>The long commitment time indicated a diffusive process, i.e. the system was just wandering on a flat free-energy landscape, not falling downhill.</li>
+            <li>Hairpin 1 formation is the rate-limiting step.</li>
+            <li>Formation of hairpin 1 taking half of the folding time made sense because a transition state structure has a 50% chance of folding, i.e. it takes half the time on average to form hairpin 1 than to complete the entire folding process.</li>
+        </ul>
+    </p>
+    <h4>5.	Using Φ-values to infer TSE structure</h4>
+    <p>Some residues were mutated and it was observed how that affected folding/ unfolding rate. This gives clues about which parts of the protein are involved in the transition state (TSE). Φ ~1 is interpreted as ‘The residue forms native contacts in the transition state, it is folded’, Φ ~0 is interpreted as ‘The residue does not participate in native interactions in the TSE’, and 0 < Φ < 1 as ‘The residue is partially formed or flexible in the TSE’. Two methods were used to calculate Φ-values-</p>
+    <ul>
+        <li>Side chains: Contact approximation was used. It assumes that the fewer native contacts a mutated residue has in the TSE, the lower its Φ-value.</li>
+        <li>Backbone: A more accurate method, free energy perturbation (FEP) to estimate the energy change from mutating the backbone.</li>
+    </ul>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>Hairpin 1: High Φ-values, therefore, fully formed in the TSE.</li>
+            <li>Hairpin 2: Low Φ-values which means it mostly forms after the transition state.</li>
+            <li>All six mutants folded reversibly, meaning, they did not break the protein.</li>
+            <li>Most of the Φ-values obtained in the simulation were in reasonable agreement with the TSE estimates through contact approximation, one outlier being Arg11. Simulation showed that Arg11 is not important in TSE (Φ = 0.2), but the contact model showed that it is (Φ = 0.8).</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>Consistent with earlier simulation results: Hairpin 1 folds first and is rate-limiting.</li>
+            <li>Contact approximations are not always reliable for individual residues.</li>
+            <li>One should not rely too heavily on a single Φ-value instead, one should look at patterns across many residues to understand the overall structure of the transition state.</li>
+            <li>Even with mutations, the protein still folded using the same general mechanism, i.e. first hairpin then second hairpin followed by the core.</li>
+            <li>Some mutations caused Hammond-like shifts, meaning, the TSE subtly changed shape in response to mutations, similar to how energy barriers shift in chemical reactions.</li>
+        </ul>
+    </p>
+    <h4>6.	The free-energy barrier FiP35 folds across</h4>
+    <p>The complete kinetic model of folding was obtained. Not only was the energy landscape for FiP35 folding mapped out, but also the ease of the movement of the system at each point along that path was accounted for by creating a free-energy profile, determining an optimized reaction coordinate, and finding the position-dependent diffusion constant. A simplified physics model (Langevin dynamics) based on the free energy landscape and diffusion constants was used to simulate how particles behave in a noisy, thermal environment, like water.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>The energy barrier that FiP35 must overcome to fold was found to be very low, just 1.6 kcal/mol, which is about 2 times the average thermal energy at room temperature (k<sub>B</sub>T).</li>
+            <li>Instead of a sharp peak in the free energy (like a tall hill), the transition state was spread out and shallow like a plateau.</li>
+            <li>This caused the protein to linger near the transition state, leading to longer commitment times (i.e., it took longer to “decide” whether it will fold or not).</li>
+            <li>The Langevin model simulations closely matched the full-blown MD simulations, which validated the kinetic model.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>FiP35 almost folds "downhill", with little resistance. It is on the edge of barrierless folding.</li>
+            <li>If a simpler model (Langevin dynamics) works, it gives confidence that the reaction coordinate and barrier height are correct.</li>
+        </ul>
+    </p>
+    <h4>7.	Simulating temperature-jump (T-jump) experiments</h4>
+    <p>The Langevin dynamics was also used to simulate temperature-jump experiments. A protein sample was rapidly heated (by a few degrees), and it was watched how quickly the protein responds (folds/unfolds), spectroscopy (like fluorescence or IR) was used.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>Two kinetic phases were observed-</li>
+            <ul>
+                <li>Slow phase which was the actual folding event, it took µs.</li>
+                <li>Fast phase which was very rapid (~sub-µs) molecular motions, like backbone reorganization or early hydrogen bonds forming.</li>
+            </ul>
+            <li>The transition path time value obtained in these experiments (≤0.7 µs) agreed with theoretical estimates (0.3 µs) and simulations (0.4 ± 0.1 µs).</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>The fast phase is an experimental signature of folding over a small barrier, where the transition region is broad and accessible.</li>
+            <li>It means one can detect transition-state properties spectroscopically which is rare and valuable.</li>
+            <li>Multiple independent methods converge on ~1 µs or less which means, the folding is very fast.</li>
+        </ul>
+    </p>
+    <h3>Bovine Pancreatic Trypsin Inhibitor (BPTI) protein</h3>
+    <p>BPTI is small, stable, and has been studied for decades. It was the first protein examined by NMR for internal motion. It is an ideal benchmark system for comparing simulation vs. experiment.</p>
+    <h4>8.	Native-state dynamics of BPTI</h4>
+    <p>Even when a protein has folded into its native state, it does not freeze, it wiggles, breathes, shifts subtly between substates, engages in chemical interactions (e.g., water exchange, ring flips, bond rotations). Atomic-level MD simulation of BPTI was run for 1 millisecond (very long by simulation standards) at room temperature.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>It was observed that BPTI reversibly transitioned between multiple long-lived conformational states.</li>
+            <li>These states lasted from 6 to 26 µs each.</li>
+            <li>Five states were observed but two dominated-</li>
+            <ul>
+                <li>Crystallographic state (27%), RMSD of just 0.8 Å from the known crystal structure. These were basically the classic folded form, very stable.</li>
+                <li>Left-handed disulfide bridge state (56%) disulfide bond between Cys14–Cys38 flipped to an alternate handedness. This state had been suggested by NMR before, here it was directly seen in MD.</li>
+            </ul>
+            <li>From the experiments (especially NMR) it was expected that the Crystallographic state would be the dominant state or at least more balanced with the left-handed disulfide form. The left-handed disulfide state was proposed, but not thought to be this populated. So, this simulation predicted a higher population for the alternative conformation than experiment suggested. This difference in observed percentages was the imbalance in population.</li>
+            <li>The simulation also revealed 3 rarer conformations:</li>
+            <ul>
+                <li>Extra cavities filled with water</li>
+                <li>Transient pores forming</li>
+                <li>Partial unfolding of the N-terminal helix</li>
+            </ul>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>These two states were supported by experiment, validating the simulation.</li>
+            <li>The imbalance in population reflects an error in the relative free energies of the two conformations. Populations relate to free energy differences via the Boltzmann distribution:</li>
+            $$\frac{P_1}{P_2}= e^{-(\frac{\bigtriangleup G}{k_bT})}$$
+            <p>k<sub>B</sub>: Boltzmann constant</p>
+            <p>T: Temperature</p>
+            <p>P<sub>1</sub>: Population 1</p>
+            <p>P<sub>2</sub>: Population 2</p>
+            <p>∆G: Free energy</p>
+            <p>Therefore, a 10% population error translates to a small ΔG error, often on the order of 1-2 k<sub>B</sub>T. It was concluded that this discrepancy was small and well within the expected error range of modern force fields.</p>
+            <li>The three previously unobserved states are subtle, short-lived, and might be functionally relevant or lead to interactions, misfolding, or binding events.</li>
+        </ul>
+    </p>
+    <h4>9.	Separation of time scales</h4>
+    <p>To study how protein moves even when they are already folded, their motions across a vast range of time scales was quantified. Different types of motions happen at distinct, non-overlapping speeds. This means one can clearly distinguish fast motions (side-chain wiggles, local vibrations), slow motions (backbone rearrangements, state transitions) and a gap (the time interval when almost nothing happens in between the two motions). Autocorrelation functions of bond orientations (tracking how bond directions change over time) was used across a massive time window — from picoseconds to milliseconds. This enabled the quantification of how dynamic the structure was at every time scale, they called it dynamical content.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>Two main classes of motion were observed.</li>
+            <table>
+                <tr>
+                    <th>Motion type</th>
+                    <th>Time scale</th>
+                    <th>Origin</th>
+                </tr>
+                <tr>
+                    <td>Fast, high frequency motions</td>
+                    <td>⁓ps to ns</td>
+                    <td>Side chains</td>
+                </tr>
+                <tr>
+                    <td>Slow, rare transitions</td>
+                    <td>~10µs to 10ms</td>
+                    <td>Backbone hopped between conformational basins</td>
+                </tr>
+                <tr>
+                    <td>Gap</td>
+                    <td>⁓100ns to µs</td>
+                    <td>Almost nothing happened here, a clear time-scale separation</td>
+                </tr>
+            </table>
+            <li>The backbone motion was observed to be nearly frozen within a conformational state. Once BPTI was in a folded state, its backbone structure was stable and did not fluctuate much.</li>
+            <li>The side chains still jiggled a lot but that did not trigger conformational transitions.</li>
+            <li>The time-scale gap enabled them to group protein conformations (kinetic clustering) into states that were long-lived because one could clearly see when the system hopped from one basin to another due to the clean time-scale separation.</li>
+            <li>The time it took to actually cross from one conformational state to another (not the dwell time, but the crossing itself), even in tiny BPTI, was hundreds of nanoseconds. This was ⁓ (10–100) times longer than most side-chain wiggles.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>There is very little meaningful motion in between the side-chain nanosecond wiggles and the backbone-driven conformational jumps.</li>
+            <li>The stable backbone structure and constantly moving sidechain structure led to the model of- A solid backbone with liquid-like sidechains. This aligned with earlier NMR and computational findings.</li>
+            <li>Transition events are slow and rare compared to all the internal fluctuations. The conformational states are stable and they do not transition just because of a brief twitch.</li>
+            <li>This led to a general framework for protein dynamics-</li>
+            <table>
+                <tr>
+                    <th>Time scale</th>
+                    <th>Motion type</th>
+                    <th>Dominated by</th>
+                </tr>
+                <tr>
+                    <td>ps-ns</td>
+                    <td>Side chain fluctuations</td>
+                    <td>Entropic/local</td>
+                </tr>
+                <tr>
+                    <td>10ns-µs (gap)</td>
+                    <td>Minimal dynamic activity</td>
+                    <td>Kinetic barrier</td>
+                </tr>
+                <tr>
+                    <td>µs-ms</td>
+                    <td>Backbone transitions between conformational states</td>
+                    <td>Rrae events</td>
+                </tr>
+            </table>
+            <p>This pattern — fast wiggles, slow hops, quiet middle was concluded to be a universal feature of folded proteins.</p>
+        </ul>
+    </p>
+    <h4>10.	Aromatic ring rotation as a probe of global state</h4>
+    <p>BPTI has 8 aromatic side chains. These rings serve as local sensors of the protein's conformational environment. They also observed four trapped water molecules (name tagged W111, W112, W113, W122) inside BPTI, and measured how often they exchanged with the bulk solvent.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>Seven of the eight aromatic rings of BPTI rotated in the simulation. Their rotation rates varied and matched experimental NMR data. Some rotated slowly while others rotated quickly.</li>
+            <li>The observation of water molecules revealed-</li>
+            <table>
+                <tr>
+                    <th>Water molecules</th>
+                    <th>Exchange speed</th>
+                    <th>Interpretation</th>
+                </tr>
+                <tr>
+                    <td>W111</td>
+                    <td>Very fast</td>
+                    <td>Loosely bound/exposed</td>
+                </tr>
+                <tr>
+                    <td>W112/W113</td>
+                    <td>Intermediate</td>
+                    <td>Moderately buried</td>
+                </tr>
+                <tr>
+                    <td>W122</td>
+                    <td>Very slowly (µs)</td>
+                    <td>Deeply buried, tightly bound</td>
+                </tr>
+            </table>
+            <li>W122 only bound when BPTI was in the crystallographic state. It stayed bound for 14 milliseconds on an average. The protein stayed in that state for 25 µs at a time. </li>
+            <li>Water entry/exit was ultrafast but rare. Water escape path was equal to a few picoseconds long.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>Rings that rotated slowly were in rigid areas that do not change during transitions between conformational states. Rings that rotated quickly were in flexible regions that move during these large-scale shifts. The rate of ring flipping can report on whether that part of the protein is structurally dynamic i.e., its conformational flexibility.</li>
+            <li>The observation of water molecules matches experimental NMR results, and validates the dynamics of hydration pockets inside the protein.</li>
+            <li>The lifetime of trapped water provided a lower bound for how long the protein stays in a specific conformation.</li>
+            <li>The phenomenon of W122 only binding when BPTI is in the “crystallographic” conformation makes it a molecular reporter for that state.</li>
+            <li>Entry/exit events are very quick once the gate opens but the gate is rarely open.</li>
+            <li>Binding and escape can be faster than the lifetime of the ligand. It means proteins do not need intermediate states or big rearrangements to bind/release ligands. Therefore, access to buried sites may not require long-lived open states just brief, transient channels.</li>
+        </ul>
+    </p>
+    <h4>11.	Transition path times for conformational changes</h4>
+    <p>Simple chemical reactions were compared to the folding and conformational changes in protein. Factors like k0 (pre-exponential factor: it captures how often the system tries to cross the barrier.) and tTP (transition path time: this is not the time the protein spends stuck in a state, it is the time the protein takes to actually make the jump, once it starts moving) were studied in order to do so. These factors were central to understanding how fast and how rugged protein energy landscapes really are.</p>
+    <h5>Observation</h5>
+    <p>
+        <ul>
+            <li>The k<sub>0</sub> for FiP35 folding was found to be ⁓1µs, i.e., one attempt per microsecond whereas k<sub>0</sub> for simple chemical reactions is ⁓10<sup>12</sup> s<sup>-1</sup>, i.e., picosecond attempts.</li>
+            <p>In Transition State Theory (TST), the reaction rate is:</p>
+            $$k=k_0.e^{\frac{-\bigtriangleup G}{k_BT}}$$
+            <p>ΔG: free energy barrier</p>
+            <p>K<sub>B</sub>: Boltzmann constant</p>
+            <p>T: Ambient temperature</p>
+            <li>The transition path time (t<sub>TP</sub>) for F1P35 folding and for BPTI conformational changes respectively was observed to be 0.4 µs and 0.3 µs.</li>
+        </ul>
+    </p>
+    <h5>Inference</h5>
+    <p>
+        <ul>
+            <li>Protein folding and conformational changes are a million times slower than simple chemical reactions. This is because while simple chemical reactions have smooth energy surfaces and well-defined reactant-product transitions, proteins have rugged free energy landscape full of local minima, traps, and subtle barriers. So, crossing from one state to another takes a lot longer for proteins even if the energy barrier is small. The protein doesn’t attempt barrier crossings as often.</li>
+            <li>The observed transition path time for FiP35 and BPTI matched the theoretical estimates from energy landscape models and experimental estimates from single-molecule studies and T-jump spectroscopy. This validates both the simulation and the underlying landscape theory.</li>
+        </ul>
+    </p>
+    <h2>CONCLUSION</h2>
+    <p>
+        <ul>
+            <li>These simulations offered unprecedented atomic-level insights into protein folding pathways and conformational changes.</li>
+            <li>The study demonstrated that with appropriate computational resources, it is possible to observe and characterize protein dynamics over biologically relevant timescales, bridging the gap between computational predictions and experimental observations.</li>
+            <li>This work has significantly advanced our understanding of protein behaviour, influencing subsequent research in molecular biology and biophysics.</li>
+        </ul>
+        <p>This paper was revolutionary because it watched the structural dynamics of the two proteins happen in real-time at atomic resolution using long molecular dynamics simulations—a huge leap forward from seeing proteins as frozen snapshots in X-ray structures.</p>
+    </p>
+  </body>
+</html>
